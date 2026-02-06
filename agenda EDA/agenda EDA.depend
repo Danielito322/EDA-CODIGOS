@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1769440605 source:e:\codeblocks\agenda eda\main.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<iomanip>
+	<conio.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1769008855 source:e:\codeblocks\burbuja\main.cpp
+	<iostream>
+	<chrono>
+	<cstdlib>
+
