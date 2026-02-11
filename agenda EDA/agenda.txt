@@ -1,0 +1,5 @@
+1;0;0;s;s;s;123456;anskdasdnaksd;jasjdaskd
+2;0;0;juan;quispe;mamani;45679;danyel@gmial;jr lima 25
+3;0;0;marco;chay¤a;mamani;3256;danyel@gmail;jr lima 24
+4;1;0;Yeferson;chalco;chu¤o;9562 2458;yefer@gmail.com;jr quilcapunco
+5;0;0;lolo{;quispe;mamani;123456;dan@gmail.com;jr puno 24
