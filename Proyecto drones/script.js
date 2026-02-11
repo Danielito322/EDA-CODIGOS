@@ -51,7 +51,7 @@ class Vector2D extends Point2D {
     }
 }
 
-// ✅ NUEVO: Sistema avanzado de detección de cruces y evasión
+// Sistema avanzado de detección de cruces y evasión
 class PathManager {
     static DETECTION_RADIUS = 80; // Radio de detección de cruces
     static MIN_SEPARATION = 25; // Distancia mínima entre drones
@@ -187,9 +187,9 @@ class Drone extends Point2D {
     #size;
     #glow;
     #id;
-    #waypoint; // ✅ NUEVO: Punto intermedio para evasión
-    #hasWaypoint; // ✅ NUEVO: Flag de waypoint activo
-    #baseSpeed; // ✅ NUEVO: Velocidad base variable
+    #waypoint; //  Punto intermedio para evasión
+    #hasWaypoint; //  Flag de waypoint activo
+    #baseSpeed; //  Velocidad base variable
     static #nextId = 0;
 
     static STATES = {
@@ -197,7 +197,7 @@ class Drone extends Point2D {
         MOVING: 'MOVING',
         ARRIVED: 'ARRIVED',
         RETURNING: 'RETURNING',
-        TO_WAYPOINT: 'TO_WAYPOINT' // ✅ NUEVO: Moviéndose a waypoint
+        TO_WAYPOINT: 'TO_WAYPOINT' //  Moviéndose a waypoint
     };
 
     constructor(x, y, color) {
@@ -214,7 +214,7 @@ class Drone extends Point2D {
         this.#color = color;
         this.#size = 8;
         this.#glow = 0;
-        // ✅ NUEVO: Velocidad base aleatoria para variedad
+        //  Velocidad base aleatoria para variedad
         this.#baseSpeed = 4000 + Math.random() * 2000;
     }
 
@@ -249,7 +249,7 @@ class Drone extends Point2D {
         this.#waypoint = null;
     }
 
-    // ✅ NUEVO: Establecer waypoint de evasión
+    // Establecer waypoint de evasión
     setAvoidanceWaypoint(waypoint) {
         if (this.#state === Drone.STATES.MOVING) {
             this.#waypoint = waypoint.clone();
@@ -274,7 +274,7 @@ class Drone extends Point2D {
             this.#state === Drone.STATES.RETURNING || 
             this.#state === Drone.STATES.TO_WAYPOINT) {
             
-            // ✅ Usar velocidad base variable
+            // Usar velocidad base variable
             this.#progress += deltaTime / this.#baseSpeed;
 
             if (this.#progress >= 1) {
@@ -318,7 +318,7 @@ class Drone extends Point2D {
         ctx.arc(this.#currentPos.x, this.#currentPos.y, this.#size, 0, Math.PI * 2);
         ctx.fill();
 
-        // ✅ NUEVO: Dibujar línea de trayectoria si tiene waypoint (debug opcional)
+        //  Dibujar línea de trayectoria si tiene waypoint (debug opcional)
         // Descomenta para visualizar las rutas de evasión
         /*
         if (this.#state === Drone.STATES.TO_WAYPOINT && this.#waypoint) {
@@ -899,7 +899,7 @@ class DroneManager {
         this.#ctx.fillStyle = '#0a0e27';
         this.#ctx.fillRect(0, 0, this.#canvas.width, this.#canvas.height);
 
-        // ✅ NUEVO: Detectar y resolver cruces de trayectorias
+        // NUEVO: Detectar y resolver cruces de trayectorias
         this.#detectAndAvoidCrossings();
 
         let inFormation = 0;
@@ -928,7 +928,7 @@ class DroneManager {
         requestAnimationFrame(t => this.#animate(t));
     }
 
-    // ✅ NUEVO: Sistema principal de detección y evasión de cruces
+    // Sistema principal de detección y evasión de cruces
     #detectAndAvoidCrossings() {
         const movingDrones = this.#drones.filter(d => 
             d.state === Drone.STATES.MOVING || d.state === Drone.STATES.RETURNING
