@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls {
+    background: rgba(26, 31, 58, 0.9);
+    padding: 15px 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.controls input {
+    flex: 1;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.controls input:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+.controls button {
+    padding: 10px 30px;
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+}
+
+.info {
+    background: rgba(0, 212, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.canvas-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.stats {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(26, 31, 58, 0.9);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 5px 0;
+}
+
+.stat-label {
+    color: #00d4ff;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #fff;
+}
