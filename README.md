@@ -1,4 +1,4 @@
-# 📊 PLANO CARTESIANO - C++ 
+#  PLANO CARTESIANO - C++ 
 
 
 ##  ¿Qué hace el programa?
