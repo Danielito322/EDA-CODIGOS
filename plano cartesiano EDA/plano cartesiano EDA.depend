@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1772279234 source:e:\codeblocks\plano cartesiano eda\main.cpp
+	<iostream>
+	<iomanip>
+	<cmath>
+	<string>
+
