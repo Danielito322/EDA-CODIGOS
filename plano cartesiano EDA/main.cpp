@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cmath>
 #include <string>
+#include <limits>
 using namespace std;
 
 const string RESET  = "\033[0m";
@@ -27,6 +28,24 @@ struct Grupo {
     string nombre;
 };
 
+int leerEntero(const string& mensaje, int minVal = -9999, int maxVal = 9999) {
+    int valor;
+    while (true) {
+        cout << mensaje;
+        cin >> valor;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "  dato no valido, ingrese un numero entero." << endl;
+        } else if (valor < minVal || valor > maxVal) {
+            cout << "  valor fuera de rango (" << minVal << " - " << maxVal << ")." << endl;
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return valor;
+        }
+    }
+}
+
 class plano_cartesiano {
 private:
     int t;
@@ -42,27 +61,24 @@ private:
 
 public:
     void pedir_datos() {
-        cout << "Colocar dimension del plano cartesiano: ";
-        cin >> t;
+        t = leerEntero("Colocar dimension del plano cartesiano: ", 1, 100);
 
-        cout << "Cuantos puntos desea ingresar? ";
-        cin >> n;
+        n = leerEntero("Cuantos puntos desea ingresar? ", 1, 100);
         for (int i = 0; i < n; i++) {
             cout << "\n--- Punto " << i + 1 << " ---" << endl;
             cout << "Nombre del punto: ";
             cin >> puntos[i].nombre;
-            cout << "Coordenada x: ";
-            cin >> puntos[i].x;
-            cout << "Coordenada y: ";
-            cin >> puntos[i].y;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            puntos[i].x = leerEntero("Coordenada x: ", 0, t);
+            puntos[i].y = leerEntero("Coordenada y: ", 0, t);
             puntos[i].grupo = -1;
         }
 
-        cout << "\nCuantos grupos desea crear? ";
-        cin >> numGrupos;
+        numGrupos = leerEntero("\nCuantos grupos desea crear? ", 1, 50);
         for (int i = 0; i < numGrupos; i++) {
             cout << "Nombre del grupo " << i + 1 << ": ";
             cin >> grupos[i].nombre;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
         asignar_inicial();
@@ -78,18 +94,14 @@ public:
     }
 
     void asignar_inicial() {
-        // si hay menos puntos que grupos, cada punto a un grupo distinto
         if (n <= numGrupos) {
             for (int i = 0; i < n; i++)
                 puntos[i].grupo = i;
             return;
         }
 
-        // primer punto al grupo 0
         puntos[0].grupo = 0;
 
-        // asegurar que cada grupo tenga al menos un punto semilla
-        // usando los puntos mas alejados entre si
         bool grupoOcupado[50] = {false};
         grupoOcupado[0] = true;
 
@@ -113,7 +125,6 @@ public:
             grupoOcupado[g] = true;
         }
 
-        // asignar el resto por knn con los ya asignados
         for (int i = 0; i < n; i++) {
             if (puntos[i].grupo != -1) continue;
 
@@ -226,10 +237,9 @@ public:
         cout << "\n--- agregar nuevo punto ---" << endl;
         cout << "nombre del punto: ";
         cin >> puntos[n].nombre;
-        cout << "coordenada x: ";
-        cin >> puntos[n].x;
-        cout << "coordenada y: ";
-        cin >> puntos[n].y;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        puntos[n].x = leerEntero("coordenada x: ", 0, t);
+        puntos[n].y = leerEntero("coordenada y: ", 0, t);
 
         int k = (int)sqrt((double)n);
         if (k < 1) k = 1;
@@ -295,9 +305,7 @@ int main() {
         cout << "|  1. agregar nuevo punto   |" << endl;
         cout << "|  2. salir                 |" << endl;
         cout << "+---------------------------+" << endl;
-        cout << "opcion: ";
-        int op;
-        cin >> op;
+        int op = leerEntero("opcion: ", 1, 2);
         if (op == 2) {
             cout << "saliendo..." << endl;
             break;
