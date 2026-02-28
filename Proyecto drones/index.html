@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Drones - Formación de Texto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <input type="text" id="textInput" placeholder="Escribe el texto a formar..." maxlength="13">
+            <button onclick="formText()">Formar Texto</button>
+            <div class="info">
+                <span class="stat-label">Drones totales:</span>
+                <span class="stat-value" id="droneCount">0</span>
+            </div>
+        </div>
+        
+        <div class="canvas-wrapper">
+            <canvas id="droneCanvas"></canvas>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Texto actual:</span>
+                    <span class="stat-value" id="currentText">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">En formación:</span>
+                    <span class="stat-value" id="inFormation">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">En espera:</span>
+                    <span class="stat-value" id="waiting">300</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Estado:</span>
+                    <span class="stat-value" id="status">Esperando</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
